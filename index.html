@@ -3,243 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Lab Programs (4, 5 & 6)</title>
+    <title>Good Morning</title>
+    <!-- Tailwind CSS for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            margin: 0;
-            padding: 20px;
+        /* Custom animation for a gentle fade-in */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            border-bottom: 2px solid #2c3e50;
-            padding-bottom: 10px;
-        }
-        .program-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-            padding: 20px;
-            border-left: 5px solid #3498db;
-        }
-        h2 {
-            margin-top: 0;
-            color: #2980b9;
-        }
-        .statement {
-            font-style: italic;
-            background-color: #e8f6f3;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 15px;
-        }
-        .code-wrapper {
-            position: relative;
-            background-color: #282c34;
-            border-radius: 6px;
-            overflow: hidden;
-        }
-        pre {
-            margin: 0;
-            padding: 15px;
-            overflow-x: auto;
-        }
-        code {
-            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-            color: #abb2bf;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-        /* Simple Syntax Highlighting Colors */
-        .keyword { color: #c678dd; }
-        .function { color: #61afef; }
-        .string { color: #98c379; }
-        .comment { color: #5c6370; font-style: italic; }
-        .number { color: #d19a66; }
-
-        .copy-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-        .copy-btn:hover {
-            opacity: 1;
-        }
-        .output-section {
-            margin-top: 15px;
-            background-color: #eee;
-            padding: 10px;
-            border-radius: 4px;
-            font-family: monospace;
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-100 flex items-center justify-center min-h-screen p-4">
 
-<div class="container">
-    <h1>Python Lab Manual Programs</h1>
-
-    <div class="program-card">
-        <h2>Program 4: Frequency of Words</h2>
-        <div class="statement">
-            <strong>Problem Statement:</strong> Develop a python to print 10 most frequently appearing words in a text file. Use dictionary with distinct words and their frequency of occurrences. [cite_start]Sort the dictionary in reverse order of frequency and display dictionary slice of first 10 items[cite: 68, 69, 70].
-        </div>
-
-        <div class="code-wrapper">
-            <button class="copy-btn" onclick="copyToClipboard('code4')">Copy Code</button>
-            <pre><code id="code4"><span class="keyword">import</span> operator <span class="comment"># for dictionary sorting</span>
-<span class="keyword">import</span> itertools <span class="comment"># for dictionary slicing</span>
-
-fname = <span class="function">input</span>(<span class="string">"enter the file name:"</span>) <span class="comment"># Step 1: ask for file name</span>
-<span class="keyword">try</span>:
-    fhand = <span class="function">open</span>(fname) <span class="comment"># Step 2: open the file</span>
-    d1 = <span class="function">dict</span>()
-    
-    <span class="comment"># Step 3: read each line and split into words</span>
-    <span class="keyword">for</span> line <span class="keyword">in</span> fhand:
-        words = line.split()
-        <span class="keyword">for</span> word <span class="keyword">in</span> words:
-            <span class="keyword">if</span> word <span class="keyword">in</span> d1:
-                <span class="comment"># Step 4: count each word</span>
-                d1[word] = d1[word] + <span class="number">1</span>
-            <span class="keyword">else</span>:
-                d1[word] = <span class="number">1</span>
-
-    <span class="comment"># Step 5: print the original dictionary</span>
-    <span class="function">print</span>(<span class="string">"\n Original dictionary:"</span>)
-    <span class="function">print</span>(d1)
-
-    <span class="comment"># Step 6: sort dictionary by frequency (descending order)</span>
-    <span class="function">print</span>(<span class="string">"\n The reverse ordered sorted dictionary "</span>)
-    sorted_d = <span class="function">dict</span>(<span class="function">sorted</span>(d1.items(), key=operator.itemgetter(<span class="number">1</span>), reverse=<span class="keyword">True</span>))
-    <span class="function">print</span>(sorted_d)
-
-    <span class="comment"># Step 7: slice the sorted dictionary (top 10 words)</span>
-    new_dict = <span class="function">dict</span>(itertools.islice(sorted_d.items(), <span class="number">10</span>))
-    <span class="function">print</span>(<span class="string">"\n Dictionary slice of first 10 items:"</span>, new_dict)
-
-<span class="keyword">except</span>:
-    <span class="function">print</span>(<span class="string">"file name not found"</span>)</code></pre>
-        </div>
-        <div class="output-section">
-            [cite_start]<strong>Note:</strong> Requires a text file (e.g., <code>sample.txt</code>) with content to work properly[cite: 96].
-        </div>
-    </div>
-
-    <div class="program-card">
-        <h2>Program 5: Bubble Sort Marks</h2>
-        <div class="statement">
-            <strong>Problem Statement:</strong> Develop a program to read 6 subject marks from the keyboard for a student. [cite_start]Generate a report that displays the marks from the highest to the lowest score attained by the student using the Bubble Sort technique[cite: 2, 3, 4].
-        </div>
-
-        <div class="code-wrapper">
-            <button class="copy-btn" onclick="copyToClipboard('code5')">Copy Code</button>
-            <pre><code id="code5">marks = [] <span class="comment"># 1-D list</span>
-<span class="comment"># Reading 6 subject marks</span>
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">6</span>):
-    m = <span class="function">int</span>(<span class="function">input</span>(<span class="string">"Enter mark {}: "</span>.format(i+<span class="number">1</span>)))
-    marks.append(m)
-
-<span class="comment"># Bubble Sort (Descending order)</span>
-n = <span class="function">len</span>(marks)
-<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(n):
-    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="function">range</span>(<span class="number">0</span>, n-i-<span class="number">1</span>):
-        <span class="keyword">if</span> marks[j] < marks[j+<span class="number">1</span>]: <span class="comment"># change < for descending</span>
-            marks[j], marks[j+<span class="number">1</span>] = marks[j+<span class="number">1</span>], marks[j]
-
-<span class="comment"># Display sorted marks</span>
-<span class="function">print</span>(<span class="string">"\nMarks from Highest to Lowest:"</span>)
-<span class="keyword">for</span> m <span class="keyword">in</span> marks:
-    <span class="function">print</span>(m)</code></pre>
-        </div>
-        <div class="output-section">
-            <strong>Expected Output:</strong><br>
-            [cite_start]Marks will be printed in descending order (e.g., 95, 80, 75, 60, 50, 40) [cite: 34-40].
-        </div>
-    </div>
-
-    <div class="program-card">
-        <h2>Program 6: Sort File Contents</h2>
-        <div class="statement">
-            [cite_start]<strong>Problem Statement:</strong> Develop a program to sort the contents of a text file and write the sorted contents into a separate text file[cite: 42].
-        </div>
-
-        <div class="code-wrapper">
-            <button class="copy-btn" onclick="copyToClipboard('code6')">Copy Code</button>
-            <pre><code id="code6">fname = <span class="function">input</span>(<span class="string">'Enter file name/directory: '</span>)
-<span class="keyword">with</span> <span class="function">open</span>(fname, <span class="string">'r'</span>) <span class="keyword">as</span> f:
-    read = f.read()
-    word = read.split()
-    l = []
-    <span class="keyword">for</span> i <span class="keyword">in</span> word:
-        l.append(i)
-    l.sort()
-
-wname = <span class="function">input</span>(<span class="string">'Enter file name to create: '</span>)
-<span class="keyword">with</span> <span class="function">open</span>(wname, <span class="string">'w'</span>) <span class="keyword">as</span> w:
-    <span class="keyword">for</span> j <span class="keyword">in</span> l:
-        w.write(j)
-        w.write(<span class="string">'\n'</span>)
+    <!-- Card Container -->
+    <div class="bg-white p-6 rounded-2xl shadow-xl max-w-lg w-full text-center animate-fade-in border border-slate-200">
         
-<span class="function">print</span>(<span class="string">"File\t"</span> + wname + <span class="string">"\tCreated Successfully"</span>)</code></pre>
-        </div>
-        <div class="output-section">
-            <strong>Note:</strong> Requires an input file (e.g., <code>input.txt</code>). [cite_start]It creates a new file (e.g., <code>input2.txt</code>) with sorted words [cite: 63-66].
-        </div>
-    </div>
-
-</div>
-
-<script>
-    function copyToClipboard(elementId) {
-        // Get the code text
-        var codeText = document.getElementById(elementId).innerText;
+        <h1 class="text-3xl font-bold text-slate-800 mb-6 font-serif">Kya dhek raha hai</h1>
         
-        // Use the Navigator Clipboard API
-        navigator.clipboard.writeText(codeText).then(function() {
-            // Find the button that was clicked (based on context)
-            // We need to find the button previous to the pre tag or look it up generally
-            // For simplicity, we will iterate buttons to find the one that called this, 
-            // or simpler: find the button inside the wrapper.
-            
-            // Getting the specific button is tricky without passing 'this', 
-            // so we will temporarily alert or just rely on system feedback.
-            // To make it nicer, let's find the button relative to the code block:
-            var codeBlock = document.getElementById(elementId);
-            var wrapper = codeBlock.parentElement.parentElement;
-            var btn = wrapper.querySelector('button');
-            
-            var originalText = btn.innerText;
-            btn.innerText = "Copied!";
-            btn.style.backgroundColor = "#2ecc71";
-            
-            setTimeout(function() {
-                btn.innerText = originalText;
-                btn.style.backgroundColor = "#4CAF50";
-            }, 2000);
-            
-        }, function(err) {
-            console.error('Async: Could not copy text: ', err);
-        });
-    }
-</script>
+        <!-- Image Container -->
+        <div class="rounded-xl overflow-hidden shadow-md">
+            <img 
+                src="https://media.tenor.com/u6002ayqdi4AAAAM/good-morning.gif" 
+                alt="Good Morning GIF" 
+                class="w-full h-auto object-cover"
+            >
+        </div>
+
+        <p class="mt-6 text-slate-500 italic">Chinalke.</p>
+    </div>
 
 </body>
 </html>
+
