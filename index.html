@@ -22,7 +22,7 @@
         .token-number { color: #79c0ff; }
         .token-func { color: #d2a8ff; }
         
-        /* Custom Scrollbar */
+        /* Custom Scrollbar for horizontal scrolling only */
         .custom-scrollbar::-webkit-scrollbar {
             height: 8px;
             width: 8px;
@@ -57,8 +57,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center gap-3">
-                    <div class="bg-blue-600 text-white p-2 rounded-lg">
-                        <i class="fa-solid fa-user-graduate text-xl"></i>
+                    <!-- Developer Logo -->
+                    <div class="bg-slate-800 text-white p-2 rounded-lg shadow-sm border border-slate-700">
+                        <i class="fas fa-laptop-code text-xl"></i>
                     </div>
                     <span class="font-bold text-xl tracking-tight text-slate-900">Vedant <span class="text-blue-600">Haldankar</span></span>
                 </div>
@@ -72,10 +73,8 @@
                         class="block w-full pl-10 pr-3 py-2 border border-slate-300 rounded-lg leading-5 bg-slate-50 placeholder-slate-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out sm:text-sm">
                 </div>
 
+                <!-- Empty div to maintain spacing where logo was -->
                 <div class="flex items-center gap-4">
-                    <div class="h-8 w-8 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-xs shadow-md">
-                        VH
-                    </div>
                 </div>
             </div>
             <!-- Mobile Search (Visible only on small screens) -->
@@ -96,7 +95,8 @@
         </div>
 
         <!-- Grid Container -->
-        <div id="programs-grid" class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-6">
+        <!-- Added items-start so cards don't stretch weirdly if lengths differ greatly -->
+        <div id="programs-grid" class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-6 items-start">
             <!-- Cards injected by JS -->
         </div>
 
@@ -485,7 +485,7 @@ else:
                     const highlighted = highlightCode(prog.code);
                     
                     const card = document.createElement('div');
-                    card.className = "prog-card bg-white rounded-xl overflow-hidden border border-slate-200 flex flex-col h-full";
+                    card.className = "prog-card bg-white rounded-xl overflow-hidden border border-slate-200 flex flex-col";
                     card.innerHTML = `
                         <div class="p-5 border-b border-slate-100">
                             <div class="flex justify-between items-start mb-2">
@@ -503,7 +503,7 @@ else:
                                     <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
-                            <pre class="code-font text-xs md:text-sm p-4 overflow-x-auto h-64 custom-scrollbar text-slate-300 leading-relaxed">${highlighted}</pre>
+                            <pre class="code-font text-xs md:text-sm p-4 overflow-x-auto custom-scrollbar text-slate-300 leading-relaxed">${highlighted}</pre>
                             <!-- Hidden textarea for copying -->
                             <textarea id="raw-${prog.id}" class="hidden">${prog.code}</textarea>
                         </div>
@@ -522,19 +522,30 @@ else:
         // Copy Function
         function copyToClipboard(btn, id) {
             const rawText = document.getElementById(`raw-${id}`).value;
-            navigator.clipboard.writeText(rawText).then(() => {
-                showToast();
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-                // Fallback
-                const textArea = document.createElement("textarea");
-                textArea.value = rawText;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand("Copy");
-                textArea.remove();
-                showToast();
-            });
+            
+            const textArea = document.createElement("textarea");
+            textArea.value = rawText;
+            
+            textArea.style.position = "fixed";
+            textArea.style.left = "-9999px";
+            textArea.style.top = "0";
+            document.body.appendChild(textArea);
+            
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                    showToast();
+                } else {
+                    console.error('Fallback copy failed.');
+                }
+            } catch (err) {
+                console.error('Fallback copy error', err);
+            }
+            
+            document.body.removeChild(textArea);
         }
 
         function showToast() {
