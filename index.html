@@ -22,7 +22,7 @@
         .token-number { color: #79c0ff; }
         .token-func { color: #d2a8ff; }
         
-        /* Custom Scrollbar for horizontal scrolling only */
+        /* Custom Scrollbar */
         .custom-scrollbar::-webkit-scrollbar {
             height: 8px;
             width: 8px;
@@ -52,19 +52,16 @@
 </head>
 <body class="text-slate-800">
 
-    <!-- Navbar -->
     <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center gap-3">
-                    <!-- Developer Logo -->
                     <div class="bg-slate-800 text-white p-2 rounded-lg shadow-sm border border-slate-700">
                         <i class="fas fa-laptop-code text-xl"></i>
                     </div>
                     <span class="font-bold text-xl tracking-tight text-slate-900">Vedant <span class="text-blue-600">Haldankar</span></span>
                 </div>
                 
-                <!-- Search Bar -->
                 <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <i class="fas fa-search text-slate-400"></i>
@@ -72,12 +69,7 @@
                     <input type="text" id="searchInput" placeholder="Search programs (e.g., 'Fibonacci', 'Sort')..." 
                         class="block w-full pl-10 pr-3 py-2 border border-slate-300 rounded-lg leading-5 bg-slate-50 placeholder-slate-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out sm:text-sm">
                 </div>
-
-                <!-- Empty div to maintain spacing where logo was -->
-                <div class="flex items-center gap-4">
-                </div>
             </div>
-            <!-- Mobile Search (Visible only on small screens) -->
             <div class="md:hidden pb-4">
                 <input type="text" id="searchInputMobile" placeholder="Search programs..." 
                     class="block w-full px-4 py-2 border border-slate-300 rounded-lg bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -85,22 +77,16 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
-        <!-- Stats / Intro -->
         <div class="mb-8">
             <h1 class="text-3xl font-bold text-slate-900 mb-2">My Lab Programs</h1>
             <p class="text-slate-600">Python laboratory exercises collection.</p>
         </div>
 
-        <!-- Grid Container -->
-        <!-- Added items-start so cards don't stretch weirdly if lengths differ greatly -->
         <div id="programs-grid" class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 gap-6 items-start">
-            <!-- Cards injected by JS -->
-        </div>
+            </div>
 
-        <!-- Empty State (Hidden by default) -->
         <div id="empty-state" class="hidden text-center py-20">
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-slate-100 mb-4">
                 <i class="fas fa-search text-slate-400 text-2xl"></i>
@@ -110,7 +96,6 @@
         </div>
     </main>
 
-    <!-- Toast Notification -->
     <div id="toast" class="fixed bottom-5 right-5 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
         <div class="bg-slate-800 text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-3">
             <i class="fas fa-check-circle text-green-400"></i>
@@ -126,321 +111,91 @@
                 tag: "Basics",
                 title: "1a. Basic Calculator",
                 desc: "Menu-driven arithmetic operations.",
-                code: `# Program 1a: Basic Calculator
-
-# Get input from the user
-num1 = float(input("Enter first number: "))
-num2 = float(input("Enter second number: "))
-
-# Show menu
-print("Choose operation:")
-print("1 - Add")
-print("2 - Subtract")
-print("3 - Multiply")
-print("4 - Divide")
-
-choice = int(input("Enter your choice (1-4): "))
-
-# Perform the operation
-if choice == 1:
-    print("Result:", num1 + num2)
-elif choice == 2:
-    print("Result:", num1 - num2)
-elif choice == 3:
-    print("Result:", num1 * num2)
-elif choice == 4:
-    if num2 != 0:
-        print("Result:", num1 / num2)
-    else:
-        print("Cannot divide by zero!")
-else:
-    print("Invalid choice")`
+                code: `# Program 1a: Basic Calculator\n\n# Get input from the user\nnum1 = float(input("Enter first number: "))\nnum2 = float(input("Enter second number: "))\n\n# Show menu\nprint("Choose operation:")\nprint("1 - Add")\nprint("2 - Subtract")\nprint("3 - Multiply")\nprint("4 - Divide")\n\nchoice = int(input("Enter your choice (1-4): "))\n\n# Perform the operation\nif choice == 1:\n    print("Result:", num1 + num2)\nelif choice == 2:\n    print("Result:", num1 - num2)\nelif choice == 3:\n    print("Result:", num1 * num2)\nelif choice == 4:\n    if num2 != 0:\n        print("Result:", num1 / num2)\n    else:\n        print("Cannot divide by zero!")\nelse:\n    print("Invalid choice")`
             },
             {
                 id: "1b",
                 tag: "Logic",
                 title: "1b. Senior Citizen Check",
                 desc: "Age calculation and classification.",
-                code: `# Program 1b: Senior Citizen Check
-from datetime import date
-
-perName = input("Enter the name of the person : ")
-perDOB = int(input("Enter his year of birth : "))
-
-curYear = date.today().year
-perAge = curYear - perDOB 
-
-if (perAge > 60):
-    print(perName, "aged", perAge, "years is a Senior Citizen.")
-else:
-    print(perName, "aged", perAge, "years is not a Senior Citizen.")`
+                code: `# Program 1b: Senior Citizen Check\nfrom datetime import date\n\nperName = input("Enter the name of the person : ")\nperDOB = int(input("Enter his year of birth : "))\n\ncurYear = date.today().year\nperAge = curYear - perDOB \n\nif (perAge > 60):\n    print(perName, "aged", perAge, "years is a Senior Citizen.")\nelse:\n    print(perName, "aged", perAge, "years is not a Senior Citizen.")`
             },
             {
                 id: "2a",
                 tag: "Loops",
                 title: "2a. Fibonacci Sequence",
                 desc: "Generate sequence of length N.",
-                code: `# Program 2a: Fibonacci Sequence
-
-# Read N from the user
-n = int(input("Enter the length of the Fibonacci sequence: "))
-
-# Initialize first two Fibonacci numbers
-a = 0
-b = 1
-count = 0
-
-# Generate and print the Fibonacci sequence
-while count < n:
-    print(a, end=" ") # Print the current number
-    a, b = b, a + b   # Move to the next number
-    count += 1
-print() # New line after loop`
+                code: `# Program 2a: Fibonacci Sequence\n\n# Read N from the user\nn = int(input("Enter the length of the Fibonacci sequence: "))\n\n# Initialize first two Fibonacci numbers\na = 0\nb = 1\ncount = 0\n\n# Generate and print the Fibonacci sequence\nwhile count < n:\n    print(a, end=" ") # Print the current number\n    a, b = b, a + b   # Move to the next number\n    count += 1\nprint() # New line after loop`
             },
             {
                 id: "2b",
                 tag: "Data Structures",
                 title: "2b. List Operations",
                 desc: "Insert, remove, append, pop, clear.",
-                code: `# Program 2b: List Operations
-
-# Create an empty list
-my_list = []
-
-# 1. Insert an element at index 1 and 2
-my_list.insert(1, 15)
-my_list.insert(2, 20)
-print("After inserting 15 & 20 at index 1 & 2:", my_list)
-
-# 2. Remove an element (first occurrence of 15)
-if 15 in my_list:
-    my_list.remove(15)
-print("After removing 15:", my_list)
-
-# 3. Append elements to the list
-my_list.append(5)
-my_list.append(10)
-print("After appending 10 and 20:", my_list)
-
-# 4. Display the length of the list
-print("Length of the list:", len(my_list))
-
-# 5. Pop the last element
-if my_list:
-    popped_element = my_list.pop()
-    print("Popped element:", popped_element)
-    print("List after popping:", my_list)
-
-# 6. Clear the list
-my_list.clear()
-print("List after clearing:", my_list)`
+                code: `# Program 2b: List Operations\n\n# Create an empty list\nmy_list = []\n\n# 1. Insert an element at index 1 and 2\nmy_list.insert(1, 15)\nmy_list.insert(2, 20)\nprint("After inserting 15 & 20 at index 1 & 2:", my_list)\n\n# 2. Remove an element (first occurrence of 15)\nif 15 in my_list:\n    my_list.remove(15)\nprint("After removing 15:", my_list)\n\n# 3. Append elements to the list\nmy_list.append(5)\nmy_list.append(10)\nprint("After appending 10 and 20:", my_list)\n\n# 4. Display the length of the list\nprint("Length of the list:", len(my_list))\n\n# 5. Pop the last element\nif my_list:\n    popped_element = my_list.pop()\n    print("Popped element:", popped_element)\n    print("List after popping:", my_list)\n\n# 6. Clear the list\nmy_list.clear()\nprint("List after clearing:", my_list)`
             },
             {
                 id: "3a",
                 tag: "Statistics",
                 title: "3a. Mean & Variance",
                 desc: "Calculate stats using statistics module.",
-                code: `# Program 3a: Statistics
-import statistics
-
-a = list() # empty list
-
-# ask user to enter the values
-number = int(input("Enter the number of elements you want: ")) 
-
-print('Enter number in array: ')
-for i in range(int(number)):
-    n = input("number: ")
-    a.append(int(n)) # append method will add elements in list
-
-print("\\n Given 'n' number: ")
-print(a)
-
-m = statistics.mean(a)
-v = statistics.variance(a)
-st = statistics.stdev(a)
-
-print("\\n Mean: ", m)
-print("\\n Variance: ", v)
-print("\\n Standard Deviation: ", st)`
+                code: `# Program 3a: Statistics\nimport statistics\n\na = list() # empty list\n\n# ask user to enter the values\nnumber = int(input("Enter the number of elements you want: ")) \n\nprint('Enter number in array: ')\nfor i in range(int(number)):\n    n = input("number: ")\n    a.append(int(n)) # append method will add elements in list\n\nprint("\\n Given 'n' number: ")\nprint(a)\n\nm = statistics.mean(a)\nv = statistics.variance(a)\nst = statistics.stdev(a)\n\nprint("\\n Mean: ", m)\nprint("\\n Variance: ", v)\nprint("\\n Standard Deviation: ", st)`
             },
             {
                 id: "3b",
                 tag: "Data Structures",
                 title: "3b. Digit Frequency",
                 desc: "Count frequency of digits in a number.",
-                code: `# Program 3b: Digit Frequency
-
-a = input("enter a multi digit number:")
-l = list(a) # converting string to list
-
-print("\\n list of given number is l=", l)
-
-freq = [l.count(ele) for ele in l]
-d = dict(zip(l, freq))
-
-print("\\n frequency of each digit is:", d)`
+                code: `# Program 3b: Digit Frequency\n\na = input("enter a multi digit number:")\nl = list(a) # converting string to list\n\nprint("\\n list of given number is l=", l)\n\nfreq = [l.count(ele) for ele in l]\nd = dict(zip(l, freq))\n\nprint("\\n frequency of each digit is:", d)`
             },
             {
                 id: "4",
                 tag: "File I/O",
                 title: "4. Word Frequency File",
                 desc: "Top 10 most frequent words in a file.",
-                code: `# Program 4: 10 most frequently appearing words
-import operator 
-import itertools 
-
-fname = input("enter the file name:") 
-
-try:
-    fhand = open(fname) 
-    d1 = dict()
-    
-    # Read each line and split into words
-    for line in fhand:
-        words = line.split()
-        for word in words:
-            if word in d1:
-                d1[word] = d1[word] + 1
-            else:
-                d1[word] = 1
-
-    print("\\n Original dictionary:")
-    print(d1)
-
-    # Sort dictionary by frequency (descending order)
-    print("\\n The reverse ordered sorted dictionary ")
-    sorted_d = dict(sorted(d1.items(), key=operator.itemgetter(1), reverse=True))
-    print(sorted_d)
-
-    # Slice the sorted dictionary (top 10 words)
-    new_dict = dict(itertools.islice(sorted_d.items(), 10))
-    print("\\n Dictionary slice of first 10 items:", new_dict)
-
-except FileNotFoundError:
-    print("file name not found")
-except Exception as e:
-    print("An error occurred:", e)`
+                code: `# Program 4: 10 most frequently appearing words\nimport operator \nimport itertools \n\nfname = input("enter the file name:") \n\ntry:\n    fhand = open(fname) \n    d1 = dict()\n    \n    # Read each line and split into words\n    for line in fhand:\n        words = line.split()\n        for word in words:\n            if word in d1:\n                d1[word] = d1[word] + 1\n            else:\n                d1[word] = 1\n\n    print("\\n Original dictionary:")\n    print(d1)\n\n    # Sort dictionary by frequency (descending order)\n    print("\\n The reverse ordered sorted dictionary ")\n    sorted_d = dict(sorted(d1.items(), key=operator.itemgetter(1), reverse=True))\n    print(sorted_d)\n\n    # Slice the sorted dictionary (top 10 words)\n    new_dict = dict(itertools.islice(sorted_d.items(), 10))\n    print("\\n Dictionary slice of first 10 items:", new_dict)\n\nexcept FileNotFoundError:\n    print("file name not found")\nexcept Exception as e:\n    print("An error occurred:", e)`
             },
             {
                 id: "5",
                 tag: "Sorting",
                 title: "5. Bubble Sort Marks",
                 desc: "Sort student marks from highest to lowest.",
-                code: `# Program 5: Bubble Sort Marks
-
-marks = [] # 1-D list
-
-# Reading 6 subject marks
-for i in range(6):
-    m = int(input("Enter mark {}: ".format(i+1)))
-    marks.append(m)
-
-# Bubble Sort (Descending order)
-n = len(marks)
-for i in range(n):
-    for j in range(0, n-i-1):
-        if marks[j] < marks[j+1]: # change < to > for ascending
-            marks[j], marks[j+1] = marks[j+1], marks[j]
-
-# Display sorted marks
-print("\\nMarks from Highest to Lowest:")
-for m in marks:
-    print(m)`
+                code: `# Program 5: Bubble Sort Marks\n\nmarks = [] # 1-D list\n\n# Reading 6 subject marks\nfor i in range(6):\n    m = int(input("Enter mark {}: ".format(i+1)))\n    marks.append(m)\n\n# Bubble Sort (Descending order)\nn = len(marks)\nfor i in range(n):\n    for j in range(0, n-i-1):\n        if marks[j] < marks[j+1]: # change < to > for ascending\n            marks[j], marks[j+1] = marks[j+1], marks[j]\n\n# Display sorted marks\nprint("\\nMarks from Highest to Lowest:")\nfor m in marks:\n    print(m)`
             },
             {
                 id: "6",
                 tag: "File I/O",
                 title: "6. Sort File Contents",
                 desc: "Read, sort words, and write to new file.",
-                code: `# Program 6: Sort File Contents
-
-fname = input('Enter file name/directory: ')
-
-try:
-    with open(fname, 'r') as f:
-        read = f.read()
-        word = read.split()
-    
-    l = []
-    for i in word:
-        l.append(i)
-    
-    l.sort()
-    
-    wname = input('Enter file name to create: ')
-    
-    with open(wname, 'w') as w:
-        for j in l:
-            w.write(j)
-            w.write('\\n')
-            
-    print("File\\t" + wname + "\\tCreated Successfully")
-
-except FileNotFoundError:
-    print("Input file not found.")`
+                code: `# Program 6: Sort File Contents\n\nfname = input('Enter file name/directory: ')\n\ntry:\n    with open(fname, 'r') as f:\n        read = f.read()\n        word = read.split()\n    \n    l = []\n    for i in word:\n        l.append(i)\n    \n    l.sort()\n    \n    wname = input('Enter file name to create: ')\n    \n    with open(wname, 'w') as w:\n        for j in l:\n            w.write(j)\n            w.write('\\n')\n            \n    print("File\\t" + wname + "\\tCreated Successfully")\n\nexcept FileNotFoundError:\n    print("Input file not found.")`
             },
             {
                 id: "7",
                 tag: "Functions",
                 title: "7. DivExp Function",
                 desc: "Exception handling and Assertions.",
-                code: `# Program 7: DivExp Function
-
-def DivExp(a, b):
-    # Suitable assertion for a > 0
-    assert a > 0, "a must be greater than 0"
-    c = a / b
-    return c
-
-try:
-    a = int(input("enter the first number: "))
-    b = int(input("Enter the second number: "))
-    
-    c = DivExp(a, b)
-    print("The quotient is", c)
-
-except AssertionError as ae:
-    print("Assertion Error:", ae)
-    print("Enter numeric value greater than zero")
-except ZeroDivisionError:
-    print("Cannot divide by zero")
-except ValueError:
-    print("Invalid input. Please enter integers.")`
+                code: `# Program 7: DivExp Function\n\ndef DivExp(a, b):\n    # Suitable assertion for a > 0\n    assert a > 0, "a must be greater than 0"\n    c = a / b\n    return c\n\ntry:\n    a = int(input("enter the first number: "))\n    b = int(input("Enter the second number: "))\n    \n    c = DivExp(a, b)\n    print("The quotient is", c)\n\nexcept AssertionError as ae:\n    print("Assertion Error:", ae)\n    print("Enter numeric value greater than zero")\nexcept ZeroDivisionError:\n    print("Cannot divide by zero")\nexcept ValueError:\n    print("Invalid input. Please enter integers.")`
             },
             {
                 id: "8",
                 tag: "OOP",
                 title: "8. Complex Numbers",
                 desc: "Class to sum N complex numbers.",
-                code: `# Program 8: Complex Numbers
-
-class Complex():
-    def __init__(self, a, b):
-        self.a = a
-        self.b = b
-    
-    def add(self):
-        print(self.a + self.b)
-
-n = int(input("Enter number: "))
-
-if n >= 2:
-    for i in range(n):
-        # Note: complex() inputs should be in format like 1+2j
-        try:
-            val1 = input("Enter first complex number (e.g., 1+2j): ")
-            a = complex(val1)
-            val2 = input("Enter second complex number (e.g., 3+4j): ")
-            b = complex(val2)
-            
-            a1 = Complex(a, b)
-            print("Sum: ", end="")
-            a1.add()
-        except ValueError:
-            print("Invalid complex number format.")
-else:
-    print("invalid input. Enter number greater than 2")`
+                code: `# Program 8: Complex Numbers\n\nclass Complex():\n    def __init__(self, a, b):\n        self.a = a\n        self.b = b\n    \n    def add(self):\n        print(self.a + self.b)\n\nn = int(input("Enter number: "))\n\nif n >= 2:\n    for i in range(n):\n        # Note: complex() inputs should be in format like 1+2j\n        try:\n            val1 = input("Enter first complex number (e.g., 1+2j): ")\n            a = complex(val1)\n            val2 = input("Enter second complex number (e.g., 3+4j): ")\n            b = complex(val2)\n            \n            a1 = Complex(a, b)\n            print("Sum: ", end="")\n            a1.add()\n        except ValueError:\n            print("Invalid complex number format.")\nelse:\n    print("invalid input. Enter number greater than 2")`
+            },
+            {
+                id: "9",
+                tag: "Text Analysis",
+                title: "9. Text Analysis Tool",
+                desc: "Analyzes paragraph: word frequency, sentence count, longest word.",
+                code: `# Program 9: Text Analysis Tool\n\ntext = input("Enter a paragraph:\\n")\n\n# Split sentences\nsentences = text.split(".")\nsentences = [s for s in sentences if s.strip()] # remove empty parts\n\n# Split words\nwords = text.split()\nword_count = len(words)\n\n# Longest word\nlongest = max(words, key=len)\n\n# Word frequency\nfreq = {}\nfor w in words:\n    w = w.lower()\n    if w in freq:\n        freq[w] += 1\n    else:\n        freq[w] = 1\n\nprint("Number of sentences:", len(sentences))\nprint("Number of words:", word_count)\nprint("Longest word:", longest)\nprint("Word frequency:", freq)`
+            },
+            {
+                id: "10",
+                tag: "Data Analysis",
+                title: "10. Data Summary Generator",
+                desc: "Read CSV, convert to dictionary, run summary queries (max, min, avg).",
+                code: `# Program 10: Data Summary Generator\nimport csv\n\n# Read CSV into a list of dictionaries\ndef read_csv(filename):\n    with open(filename, newline="") as f:\n        return list(csv.DictReader(f))\n\n# Convert column values to float\ndef get_column(data, column):\n    values = []\n    for row in data:\n        if row[column]: # ignore empty values\n            values.append(float(row[column]))\n    return values\n\n# Summary functions\ndef summary(values):\n    return {\n        "max": max(values),\n        "min": min(values),\n        "average": sum(values) / len(values)\n    }\n\n# Main program\nfilename = input("Enter CSV filename: ")\n\ndata = read_csv(filename)\nprint("Columns available:", list(data[0].keys()))\n\ncolumn = input("Enter column name to summarize: ")\n\nvalues = get_column(data, column)\nresult = summary(values)\n\nprint("Max:", result["max"])\nprint("Min:", result["min"])\nprint("Average:", result["average"])`
             }
         ];
 
@@ -453,15 +208,13 @@ else:
             // Strings
             code = code.replace(/(".*?"|'.*?')/g, '<span class="token-string">$1</span>');
             
-            // Comments (Order matters, do this after strings but check for conflict)
-            // A simple approach for single line comments:
+            // Comments
             code = code.replace(/(#.*$)/gm, '<span class="token-comment">$1</span>');
 
             // Keywords
             const keywords = ["def", "class", "import", "from", "if", "elif", "else", "while", "for", "in", "try", "except", "return", "print", "int", "float", "input", "len", "open", "with", "as"];
             keywords.forEach(kw => {
                 const regex = new RegExp(`\\b(${kw})\\b`, 'g');
-                // Avoid replacing inside html tags we just added
                 code = code.replace(regex, '<span class="token-keyword">$1</span>');
             });
             
@@ -504,7 +257,6 @@ else:
                                 </button>
                             </div>
                             <pre class="code-font text-xs md:text-sm p-4 overflow-x-auto custom-scrollbar text-slate-300 leading-relaxed">${highlighted}</pre>
-                            <!-- Hidden textarea for copying -->
                             <textarea id="raw-${prog.id}" class="hidden">${prog.code}</textarea>
                         </div>
                     `;
@@ -519,32 +271,23 @@ else:
             }
         }
 
-        // Copy Function
         function copyToClipboard(btn, id) {
             const rawText = document.getElementById(`raw-${id}`).value;
-            
             const textArea = document.createElement("textarea");
             textArea.value = rawText;
-            
             textArea.style.position = "fixed";
             textArea.style.left = "-9999px";
             textArea.style.top = "0";
             document.body.appendChild(textArea);
-            
             textArea.focus();
             textArea.select();
             
             try {
                 const successful = document.execCommand('copy');
-                if (successful) {
-                    showToast();
-                } else {
-                    console.error('Fallback copy failed.');
-                }
+                if (successful) showToast();
             } catch (err) {
                 console.error('Fallback copy error', err);
             }
-            
             document.body.removeChild(textArea);
         }
 
@@ -556,15 +299,10 @@ else:
             }, 2500);
         }
 
-        // Listeners
         searchInput.addEventListener('input', (e) => renderPrograms(e.target.value));
         searchInputMobile.addEventListener('input', (e) => renderPrograms(e.target.value));
 
-        // Init
         renderPrograms();
-
     </script>
 </body>
 </html>
-
-
